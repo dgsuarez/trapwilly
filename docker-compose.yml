@@ -1,0 +1,20 @@
+web:
+  build: .
+  command: bundle exec rails s -p 3000 -b '0.0.0.0'
+  volumes:
+    - .:/usr/src/app
+  ports:
+    - "3000:3000"
+  links:
+    - db
+    - queue
+    - s3
+
+db:
+  image: postgres:9.6
+
+queue:
+  image: redis:3.0
+
+s3:
+  image: lphoward/fake-s3
