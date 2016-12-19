@@ -9,6 +9,20 @@ web:
     - db
     - queue
     - object_store
+  environment:
+    - "REDIS_URL=redis://queue:6379"
+
+worker:
+  build: .
+  command: bundle exec sidekiq
+  volumes:
+    - .:/usr/src/app
+  links:
+    - db
+    - queue
+    - object_store
+  environment:
+    - "REDIS_URL=redis://queue:6379"
 
 db:
   image: postgres:9.6

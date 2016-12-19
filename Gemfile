@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.0'
 # gem 'capistrano-rails', group: :development
 
 gem 'tesseract-ocr'
+gem 'sidekiq'
+
 gem 'fog-aws'
 gem 'carrierwave'
 
