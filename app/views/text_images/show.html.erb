@@ -1,14 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Image:</strong>
-  <%= @text_image.image %>
-</p>
 
+<% if @text_image.content %>
 <p>
   <strong>Content:</strong>
   <%= @text_image.content %>
 </p>
+<% else %>
+  <p>
+    Processing
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_text_image_path(@text_image) %> |
 <%= link_to 'Back', text_images_path %>

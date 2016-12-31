@@ -28,7 +28,7 @@ class TextImagesController < ApplicationController
 
     respond_to do |format|
       if @text_image.save
-        format.html { redirect_to @text_image, notice: 'Text image was successfully created.' }
+        format.html { redirect_to @text_image, notice: 'Image was sucessfully uploaded. Processing.' }
         format.json { render :show, status: :created, location: @text_image }
       else
         format.html { render :new }
