@@ -1,24 +1,14 @@
-# README
+# TrapWilly
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+OCR as a Service... OCRaaS ... Orca... Free Willy??? Trap Willy!!!
 
-Things you may want to cover:
+## Why?
 
-* Ruby version
+This is a very simple demo of a not so simple docker-compose + rails scenario.
 
-* System dependencies
+## What?
 
-* Configuration
+This is an OCR web. Simply upload a image with text and get a text back that
+looks somewhat similar...
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
