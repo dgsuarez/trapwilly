@@ -1,34 +1,36 @@
-web:
-  build: .
-  command: bundle exec rails s -p 3000 -b '0.0.0.0'
-  volumes:
-    - .:/usr/src/app
-  ports:
-    - "3000:3000"
-  links:
-    - db
-    - queue
-    - object_store
-  environment:
-    - "REDIS_URL=redis://queue:6379"
+version: "2"
+services:
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - queue
+      - object_store
+    environment:
+      - "REDIS_URL=redis://queue:6379"
 
-worker:
-  build: .
-  command: bundle exec sidekiq
-  volumes:
-    - .:/usr/src/app
-  links:
-    - db
-    - queue
-    - object_store
-  environment:
-    - "REDIS_URL=redis://queue:6379"
+  worker:
+    build: .
+    command: bundle exec sidekiq
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - db
+      - queue
+      - object_store
+    environment:
+      - "REDIS_URL=redis://queue:6379"
 
-db:
-  image: postgres:9.6
+  db:
+    image: postgres:9.6
 
-queue:
-  image: redis:3.0
+  queue:
+    image: redis:3.0
 
-object_store:
-  image: lphoward/fake-s3
+  object_store:
+    image: lphoward/fake-s3
