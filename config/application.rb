@@ -17,8 +17,8 @@ module Trapwilly
         :provider               => 'AWS',
         :aws_access_key_id      => 'xxx',
         :aws_secret_access_key  => 'yyy',
-        :host                   => 'object_store',
-        :endpoint               => 'http://object_store:4569'
+        :host                   => 'object_store.lvh.me',
+        :endpoint               => 'http://object_store.lvh.me:4569'
       }
       config.fog_directory  = ''                     # required
     end

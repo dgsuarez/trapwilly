@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 services:
   web:
     build: .
@@ -7,10 +7,10 @@ services:
       - .:/usr/src/app
     ports:
       - "3000:3000"
-    depends_on:
+    links:
       - db
       - queue
-      - object_store
+      - object_store:object_store.lvh.me
     environment:
       - "REDIS_URL=redis://queue:6379"
 
@@ -19,10 +19,10 @@ services:
     command: bundle exec sidekiq
     volumes:
       - .:/usr/src/app
-    depends_on:
+    links:
       - db
       - queue
-      - object_store
+      - object_store:object_store.lvh.me
     environment:
       - "REDIS_URL=redis://queue:6379"
 
@@ -34,3 +34,5 @@ services:
 
   object_store:
     image: lphoward/fake-s3
+    ports:
+      - "4569:4569"
